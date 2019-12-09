@@ -1,49 +1,592 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+    <title>NottsJS Christmas Quiz</title>
 
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
 
-		<script src="js/reveal.js"></script>
+    <style>
+      ol {
+        min-width: 80%;
+        margin: 0 ! important;
+      }
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true }
-				]
-			});
-		</script>
-	</body>
+      ol > li:not(:first-child) {
+        margin-top: 0.5em;
+      }
+
+      ol > li {
+        list-style-type: upper-alpha;
+        background-color: grey;
+        list-style-position: inside;
+      }
+
+      ol > li:nth-child(1) {
+        background-color: rgb(123, 199, 52);
+      }
+
+      ol > li:nth-child(2) {
+        background-color: rgb(199, 189, 52);
+      }
+
+      ol > li:nth-child(3) {
+        background-color: rgb(52, 152, 199);
+      }
+
+      ol > li:nth-child(4) {
+        background-color: rgb(140, 52, 199);
+      }
+
+      body[data-reveal] li[data-answer] {
+        animation-name: answer;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+      }
+
+      @keyframes answer {
+        0%  {background-color: red;}
+        50%  {background-color: black;}
+        100% {background-color: red;}
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>NottsJS Quiz</h1>
+        </section>
+        <section>
+          <section>
+            <h2>Part 1</h2>
+          </section>
+
+          <section>
+            <h3>Question 1</h3>
+            <p>
+              Brendan Eich was hired by Netscape Communications in 1995
+              with the task of embedding <strong>which</strong> programming language
+              into the Netscape Navigator browser?</p>
+            <ol>
+              <li>Java</li>
+              <li>JavaScript</li>
+              <li data-answer>Scheme</li>
+              <li>Something else</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>Question 2</h3>
+            <pre><code class="hljs js" data-trim>
+              var y = 1, x = y = typeof x
+            </code></pre>
+            <p>What is the value of <code>x</code>?</p>
+            <ol>
+              <li>1</li>
+              <li>number</li>
+              <li data-answer>undefined</li>
+              <li>Error</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>Question 3</h3>
+            <pre><code class="hljs js" data-trim>
+              typeof (() => 23)()
+            </code></pre>
+            <p>What is the result?</p>
+            <ol>
+              <li data-answer>number</li>
+              <li>string</li>
+              <li>function</li>
+              <li>Error</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>Question 4</h3>
+            <pre><code class="hljs js" data-trim>
+              var children = ['Mary','Tom','Helen','Paul','Barry'],
+                  r = /(\S).*\1/
+              var naughtyList = children.filter(name => r.test(name))
+            </code></pre>
+            <p>Who is on the <code>naughtyList</code>?</p>
+            <ol>
+              <li>Mary, Tom, Helen, Paul, Barry</li>
+              <li>Nobody</li>
+              <li>Mary, Helen</li>
+              <li data-answer>Helen, Barry</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>Question 5</h3>
+            <p>
+              <strong>LiveScript</strong> was first shipped in beta releases of Netscape Navigator 2.0.
+              When was it later renamed to JavaScript?
+            </p>
+            <ol>
+              <li>beta 1</li>
+              <li>beta 2</li>
+              <li data-answer>beta 3</li>
+              <li>on release</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>Question 6</h3>
+            <pre><code class="hljs js" data-trim>
+              function santa() {
+                return
+                {
+                  hungry: true
+                }
+              }
+              const x = typeof santa()
+            </code></pre>
+            <p>
+              What is the value of <code>x</code>?
+            </p>
+            <ol>
+              <li>function</li>
+              <li>number</li>
+              <li>object</li>
+              <li data-answer>undefined</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>Question 7</h3>
+            <pre><code class="hljs js" data-trim>
+              "1" - - "1"
+            </code></pre>
+            <p>
+              What is the result??
+            </p>
+            <ol>
+              <li>0</li>
+              <li data-answer>2</li>
+              <li>11</li>
+              <li>"11"</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>Question 8</h3>
+            <pre><code class="hljs js" data-trim>
+              const reindeer = ['Dasher','Dancer','Prancer']
+              reindeer.length = 0
+              reindeer.push(...['Vixen','Comet'])
+            </code></pre>
+            <p>
+                What is the value of <code>reindeer</code>?
+            </p>
+            <ol>
+              <li>Dasher, Dancer, Prancer</li>
+              <li>Dasher, Dancer, Prancer, Vixen, Comet</li>
+              <li data-answer>Vixen, Comet</li>
+              <li>empty</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>Question 9</h3>
+            <pre><code class="hljs js" data-trim>
+              function elf(name, age) {
+                arguments[1] = 22
+                return age
+              }
+              const elfy = elf('Elf')
+            </code></pre>
+            <p>
+              What is the value of <code>elfy</code>?
+            </p>
+            <ol>
+              <li>22</li>
+              <li>Elf</li>
+              <li data-answer>undefined</li>
+              <li>ReferenceError</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>Question 10</h3>
+            <pre><code class="hljs js" data-trim>
+              with ((x, undefined) => ['elf','reindeer','tree']) length
+            </code></pre>
+            <p>
+              What is the result?
+            </p>
+            <ol>
+              <li>1</li>
+              <li data-answer>2</li>
+              <li>3</li>
+              <li>undefined</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>Question 11</h3>
+            <pre><code class="hljs js" data-trim>
+              (true + false) > 2 + true
+            </code></pre>
+            <p>
+              What is the result?
+            </p>
+            <ol>
+              <li>true</li>
+              <li data-answer>false</li>
+              <li>TypeError</li>
+              <li>NaN</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>Question 12</h3>
+            <pre><code class="hljs js" data-trim>
+              var presents = 3,
+                  sack = {}
+              sack: {
+                presents: 2
+                gifts: ++presents
+              }
+              sack.gifts + sack.presents + presents
+            </code></pre>
+            <p>
+              What is the result?
+            </p>
+            <ol>
+              <li>ReferenceError</li>
+              <li>9</li>
+              <li>undefined</li>
+              <li data-answer>NaN</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>Question 13</h3>
+            <pre><code class="hljs js" data-trim>
+              const socks = 1
+              (new ((socks) => socks)(2))()
+            </code></pre>
+            <p>
+              What is the result?
+            </p>
+            <ol>
+              <li>1</li>
+              <li>2</li>
+              <li>undefined</li>
+              <li data-answer>TypeError</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>Question 14</h3>
+            <pre><code class="hljs js" data-trim>
+              var cake = []
+              cake[0] = 'raisins'
+              cake[1] = 'brandy'
+              cake.cooked = true
+              const quantity = cake.length
+            </code></pre>
+            <p>
+              What is the value of <code>quantity</code>?
+            </p>
+            <ol>
+              <li>1</li>
+              <li data-answer>2</li>
+              <li>3</li>
+              <li>undefined</li>
+            </ol>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Part 2</h2>
+          </section>
+
+          <section>
+            <h3>Question 15</h3>
+            <pre><code class="hljs js" data-trim>
+              new String('Santa Claus') instanceof String
+            </code></pre>
+            <p>
+              What is the result?
+            </p>
+            <ol>
+              <li data-answer>true</li>
+              <li>false</li>
+              <li>undefined</li>
+              <li>TypeError</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>Question 16</h3>
+            <p>
+              In what year did server-side JavaScript first appear?
+            </p>
+            <ol>
+              <li data-answer>1995</li>
+              <li>1998</li>
+              <li>2005</li>
+              <li>2009</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>Question 17</h3>
+            <pre><code class="hljs js" data-trim>
+              var forecast = ['ice', 'snow', 'sleet']
+              '2' in forecast
+            </code></pre>
+            <p>
+              What is the result?
+            </p>
+            <ol>
+              <li data-answer>true</li>
+              <li>false</li>
+              <li>undefined</li>
+              <li>ReferenceError</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>Question 18</h3>
+            <pre><code class="hljs js" data-trim>
+              'This is a string' instanceof String
+            </code></pre>
+            <p>
+              What is the result?
+            </p>
+            <ol>
+              <li>true</li>
+              <li data-answer>false</li>
+              <li>TypeError</li>
+              <li>ReferenceError</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>Question 19</h3>
+            <pre><code class="hljs js" data-trim>
+              function sleigh() {
+                return boots
+                boots = 10
+                function boots() { laces = 'tied' }
+                var boots = 'warm'
+              }
+              typeof sleigh()
+            </code></pre>
+            <p>
+              What is the result?
+            </p>
+            <ol>
+              <li>number</li>
+              <li data-answer>function</li>
+              <li>undefined</li>
+              <li>string</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>Question 20</h3>
+            <pre><code class="hljs js" data-trim>
+              new Array(5).toString()
+            </code></pre>
+            <p>
+              What is the result?
+            </p>
+            <ol>
+              <li data-answer>",,,,"</li>
+              <li>""</li>
+              <li>",,,,,"</li>
+              <li>"array"</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>Question 21</h3>
+            <pre><code class="hljs js" data-trim>
+              String('Chimney') === 'Chimney'
+            </code></pre>
+            <p>
+              What is the result?
+            </p>
+            <ol>
+              <li data-answer>true</li>
+              <li>false</li>
+              <li>undefined</li>
+              <li>'Chimney'</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>Question 22</h3>
+            <pre><code class="hljs js" data-trim>
+              (() => typeof arguments)()
+            </code></pre>
+            <p>
+              What is the result?
+            </p>
+            <ol>
+              <li>array</li>
+              <li>object</li>
+              <li>Array</li>
+              <li data-answer>undefined</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>Question 23</h3>
+            <pre><code class="hljs js" data-trim>
+              (function () { return typeof arguments })()
+            </code></pre>
+            <p>
+              What is the result?
+            </p>
+            <ol>
+              <li>array</li>
+              <li data-answer>object</li>
+              <li>Array</li>
+              <li>undefined</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>Question 24</h3>
+            <pre><code class="hljs js" data-trim>
+              10 > 9 > 8 === true
+            </code></pre>
+            <p>
+              What is the result?
+            </p>
+            <ol>
+              <li>true</li>
+              <li data-answer>false</li>
+              <li>ParserError</li>
+              <li>1</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>Question 25</h3>
+            <pre><code class="hljs js" data-trim>
+              var santa = 'chilly', check, grotto = {
+                santa: 'missing',
+                status: check = function() {
+                  return this.santa
+                }
+              }
+              console.log(check(), grotto.status())
+            </code></pre>
+            <p>
+              What is logged?
+            </p>
+            <ol>
+              <li>missing</li>
+              <li>chilly</li>
+              <li data-answer>chilly missing</li>
+              <li>missing chilly</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>Question 26</h3>
+            <pre><code class="hljs js" data-trim>
+              NaN === NaN
+            </code></pre>
+            <p>
+              What is the result?
+            </p>
+            <ol>
+              <li>true</li>
+              <li data-answer>false</li>
+              <li>TypeError</li>
+              <li>ParserError</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>Question 27</h3>
+            <pre><code class="hljs js" data-trim>
+              [] + [] + 'blitzen'.split('')
+            </code></pre>
+            <p>
+              What is the result?
+            </p>
+            <ol>
+              <li data-answer>"b,l,i,t,z,e,n"</li>
+              <li>TypeError</li>
+              <li>['b','l','i','t','z','e','n']</li>
+              <li>['','','b','l','i','t','z','e','n']</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>Question 28</h3>
+            <pre><code class="hljs js" data-trim>
+              var cookies = 0
+              function delivery() {
+                cookies++
+                this.cookies = cookies
+                return delivery
+              }
+              var reward = new new delivery
+            </code></pre>
+            <p>
+              What is the value of <code>reward.cookies</code>?
+            </p>
+            <ol>
+              <li>2</li>
+              <li>1</li>
+              <li>0</li>
+              <li data-answer>undefined</li>
+            </ol>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        slideNumber: true,
+        hash: true,
+        transition: 'fade',
+        autoSlide: 30000,
+        keyboard: {
+          71: function () { document.getElementsByTagName('body')[0].toggleAttribute('data-reveal') }
+        },
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true }
+        ]
+      });
+    </script>
+  </body>
 </html>
